@@ -51,8 +51,8 @@ download_release() {
   local version filename url
   version="$1"
   filename="$2"
-  platform=get_os_artifact_name
-  arch=get_system_arch
+  platform=$(get_os_artifact_name)
+  arch=$(get_system_arch)
 
   url="$GH_REPO/releases/download/v${version}/powershell-${version}-${platform}-${arch}.tar.gz"
 
