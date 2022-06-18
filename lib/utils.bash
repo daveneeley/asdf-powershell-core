@@ -32,12 +32,29 @@ list_all_versions() {
   list_github_tags
 }
 
+get_os_artifact_name() {
+  case "$OSTYPE" in
+    darwin*)  echo "osx" ;;
+    linux*)   echo "linux" ;;
+    *)        echo "unsupported: $OSTYPE" ;;
+  esac
+}
+
+get_system_arch() {
+  archie=$(dpkg  --print-architecture)
+  archie=${archie/amd64/x64}
+  archie=${archie/armhf/arm32}
+  echo $archie
+}
+
 download_release() {
   local version filename url
   version="$1"
   filename="$2"
+  platform=get_os_artifact_name
+  arch=get_system_arch
 
-  url="$GH_REPO/releases/download/v${version}/powershell-${version}-linux-x64.tar.gz"
+  url="$GH_REPO/releases/download/v${version}/powershell-${version}-${platform}-${arch}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
