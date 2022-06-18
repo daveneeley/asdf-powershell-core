@@ -41,9 +41,10 @@ get_os_artifact_name() {
 }
 
 get_system_arch() {
-  archie=$(dpkg  --print-architecture)
-  archie=${archie/amd64/x64}
-  archie=${archie/armhf/arm32}
+  archie=$(uname -m)
+  archie=${archie/x86_64/x64}
+  archie=${archie/aarch64/arm64}
+  archie=${archie/armv71/arm32}
   echo $archie
 }
 
