@@ -34,9 +34,9 @@ list_all_versions() {
 
 get_os_artifact_name() {
   case "$OSTYPE" in
-    darwin*)  echo "osx" ;;
-    linux*)   echo "linux" ;;
-    *)        echo "unsupported: $OSTYPE" ;;
+  darwin*)  echo "osx" ;;
+  linux*)   echo "linux" ;;
+  *)        echo "unsupported: $OSTYPE" ;;
   esac
 }
 
