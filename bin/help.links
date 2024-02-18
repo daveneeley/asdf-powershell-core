@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+
 echo PowerShell Core: https://github.com/PowerShell/PowerShell
